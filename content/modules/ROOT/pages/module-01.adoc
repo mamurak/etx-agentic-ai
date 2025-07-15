@@ -1,1 +1,5 @@
 = The Use Case
+
+Acme Inc. is facing issues within their CI/CD system, and they're asking you to build a Gen AI based solution for them.
+
+== The Challenge
