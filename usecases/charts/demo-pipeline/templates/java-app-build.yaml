@@ -78,5 +78,21 @@ spec:
       - name: namespace
         value: openshift-pipelines
       resolver: cluster
+  finally:
+  - name: triggeragent
+    params:
+    - name: aggregateTaskStatus
+      value: "$(tasks.status)"
+    taskSpec:
+      params:
+      - name: aggregateTaskStatus
+      steps: 
+      - name: check-task-status
+        image: ubi9/ubi
+        script: |
+          if [ $(params.aggregateTaskStatus) == "Failed" ]
+          then
+            echo "Looks like your pipeline failed dumbass, calling Doctor Mix"
+            curl -i -H "Content-Type: application/json" -X POST -d '{"namespace":"{{ .Release.Namespace }}"}' {{ .Values.agent_endpoint }}
   workspaces:
   - name: shared-workspace
