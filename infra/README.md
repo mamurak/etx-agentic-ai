@@ -23,7 +23,7 @@ export OPENSHIFT_VERSION=4.18.14
 Installs ArgoCD and ACM
 
 ```bash
-kustomize build --enable-helm gitops/bootstrap | oc apply -f-
+kustomize build --enable-helm bootstrap | oc apply -f-
 ```
 
 Create CR's
