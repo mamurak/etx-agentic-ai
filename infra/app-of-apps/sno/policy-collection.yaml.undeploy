@@ -10,7 +10,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: https://github.com/eformat/rhoai-policy-collection.git
+    repoURL: https://github.com/redhat-ai-services/etx-agentic-ai.git
     path: gitops/applications/policy-collection/overlays/sno
     targetRevision: main
     plugin:

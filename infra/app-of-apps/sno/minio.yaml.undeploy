@@ -26,7 +26,7 @@ spec:
         server: "{{.server}}"
         namespace: minio
       source:
-        repoURL: https://github.com/eformat/rhoai-policy-collection.git
+        repoURL: https://github.com/redhat-ai-services/etx-agentic-ai.git
         path: gitops/applications/minio/overlay
         plugin:
           name: argocd-novault-plugin-kustomize
