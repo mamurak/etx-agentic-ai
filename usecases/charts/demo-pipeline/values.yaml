@@ -1,0 +1,16 @@
+---
+image_name: undertow-servlet
+git_url: https://github.com/nstrug/openshift-quickstarts.git
+git_subdirectory: undertow-servlet
+git_revision: good
+# git_revision: bad
+USER_NAME:  user1
+git_server: gitea.app.cluster.xyz
+cluster_domain: app.cluster.xyz
+alert_trigger: false
+apply_feature_changes: false
+linting: false
+static_code_analysis: false
+image_scan: false
+image_signing: false
+generate_sboms: false
