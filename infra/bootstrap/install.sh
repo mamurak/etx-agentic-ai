@@ -56,8 +56,6 @@ app_of_apps() {
 
     oc apply -f gitops/app-of-apps/${ENVIRONMENT}-app-of-apps.yaml
 
-    wait_for_machine_config
-
     echo "🌴 app_of_apps ran OK"
 }
 
