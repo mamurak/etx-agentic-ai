@@ -31,6 +31,8 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: oauth-proxy
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
           image: registry.redhat.io/openshift4/ose-oauth-proxy-rhel9@sha256:603f31cbe3035d001a57f371fea58acd597143893f6409ea5adb9ce447c04875
           imagePullPolicy: IfNotPresent
           ports:
