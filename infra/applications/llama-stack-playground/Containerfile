@@ -9,6 +9,8 @@ RUN git clone --depth 1 --branch main https://github.com/meta-llama/llama-stack.
 RUN pip install --upgrade pip && \
     pip install /app/llama-stack && \
     pip install -r /app/llama-stack/llama_stack/distribution/ui/requirements.txt
+# hack
+COPY tools.py /app/llama_stack/distribution/ui/page/playground/tools.py
 EXPOSE 8501
 USER 1001
 ENTRYPOINT ["streamlit", "run", "/app/llama-stack/llama_stack/distribution/ui/app.py", "--server.port=8501", "--server.address=0.0.0.0"]
