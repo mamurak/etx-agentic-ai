@@ -1,5 +1,9 @@
 === Getting Started
 
+.Agentic Application Architecture Overview
+[link=./utilities/agentic-app-diagram.png]
+image::./utilities/agentic-app-diagram.png[Agentic App Diagram showing the architectural components and data flow of the agentic AI application, 800, 600, opts="interactive"]
+
 This template is designed to be used as a base for your showroom lab guides.
 
 The content is built using Antora, a static site generator for creating documentation sites from AsciiDoc documents.
