@@ -2,8 +2,8 @@
 replicaCount: 1
 
 image:
-  repository: quay.io/rh-aiservices-bu/llama-stack-playground # quay.io/eformat/streamlit_client
-  tag: "0.2.11"  # "0.2.4"  # "0.2.1"
+  repository: quay.io/eformat/streamlit_client  # quay.io/rh-aiservices-bu/llama-stack-playground
+  tag: "0.2.12"  # "0.2.4"  # "0.2.1"
   pullPolicy: Always
 
 imagePullSecrets: []
@@ -104,7 +104,7 @@ playground:
   # Llama Stack backend URL
   llamaStackUrl: "http://llamastack-with-config-service:8321"
   # Default model to use
-  defaultModel: "meta-llama/Llama-3.2-3B-Instruct"
+  defaultModel: "granite-31-2b-instruct"
   # Enable/disable features
   enableChat: true
   enableAgents: true
