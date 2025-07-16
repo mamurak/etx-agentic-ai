@@ -1,9 +1,9 @@
 ---
-helmGlobals:
-  chartHome: ../chart/
-
-helmCharts:
-  - name: llama-stack
-    includeCRDs: true
-    releaseName: llama-stack
-    valuesFile: values.yaml
+resources:
+  - namespace.yaml
+  - crd.yaml
+  - serviceaccount.yaml
+  - rbac.yaml
+  - service.yaml
+  - configmap.yaml
+  - deployment.yaml
