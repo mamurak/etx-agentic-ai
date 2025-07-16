@@ -20,7 +20,7 @@ podAnnotations: {}
 
 podSecurityContext:
   runAsNonRoot: true
-   runAsUser: 1001
+  runAsUser: 1001
   # Remove specific UID/GID to let OpenShift assign them
   # fsGroup: 1001
 
@@ -32,7 +32,7 @@ securityContext:
   readOnlyRootFilesystem: false
   runAsNonRoot: true
   # Remove specific UID/GID to let OpenShift assign them
-  # runAsUser: 1001
+  runAsUser: 1001
   # runAsGroup: 1001
 
 service:
