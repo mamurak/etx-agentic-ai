@@ -54,17 +54,17 @@ def get_agent(instructions, *tools):
     return agent
 
 
-def get_react_agent(*tools):
+def get_react_agent(tools):
     client = get_llama_stack_client()
     agent = ReActAgent(
         client=client,
         model=model_id,
-        tools=list(tools),
+        tools=tools,
         response_format={
             "type": "json_schema",
             "json_schema": ReActOutput.model_json_schema(),
         },
-        sampling_params=sampling_params,
+        sampling_params={"max_tokens":512},
     )
     print('Instantiated ReAct agent')
     return agent
