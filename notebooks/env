@@ -7,7 +7,7 @@ MAX_TOKENS="6000"
 STREAM="False"
 USE_PROMPT_CHAINING="True"
 # models
-LLM_MODEL_ID="granite-31-2b-instruct"
+LLM_MODEL_ID="llama-4-scout-17b-16e-w4a16"
 LLM_AS_JUDGE_MODEL_ID=""
 # MCP-related
 REMOTE_OCP_MCP_URL="http://ocp-mcp-server.agent-demo.svc.cluster.local:8000/sse"
