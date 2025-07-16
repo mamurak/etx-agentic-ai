@@ -3,8 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: shared-workspace
-  annotations:
-    volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/aws-ebs
+  namespace: {{ .Values.namespace }}
 spec:
   resources:
     requests:
