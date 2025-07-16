@@ -3,6 +3,8 @@ from os import environ
 # for communication with Llama Stack
 from llama_stack_client import Agent, LlamaStackClient
 from llama_stack_client.lib.agents.event_logger import EventLogger
+from llama_stack_client.lib.agents.react.agent import ReActAgent
+from llama_stack_client.lib.agents.react.tool_parser import ReActOutput
 
 # pretty print of the results returned from the model/agent
 import sys
@@ -14,6 +16,7 @@ load_dotenv('env')
 print('loaded environment variables')
 
 model_id = environ.get('LLM_MODEL_ID')
+ocp_mcp_url = environ.get("REMOTE_OCP_MCP_URL")
 temperature = float(environ.get('TEMPERATURE', 0.0))
 if temperature > 0.0:
     top_p = float(environ.get('TOP_P', 0.95))
@@ -22,12 +25,10 @@ else:
     strategy = {'type': 'greedy'}
 
 max_tokens = 6000
-
 sampling_params = {
     'strategy': strategy,
     'max_tokens': max_tokens,
 }
-
 stream = 'True'
 
 
@@ -49,7 +50,23 @@ def get_agent(instructions, *tools):
         sampling_params=sampling_params
     )
 
-    print(f'Instantiated agent')
+    print('Instantiated agent')
+    return agent
+
+
+def get_react_agent(*tools):
+    client = get_llama_stack_client()
+    agent = ReActAgent(
+        client=client,
+        model=model_id,
+        tools=list(tools),
+        response_format={
+            "type": "json_schema",
+            "json_schema": ReActOutput.model_json_schema(),
+        },
+        sampling_params=sampling_params,
+    )
+    print('Instantiated ReAct agent')
     return agent
 
 
