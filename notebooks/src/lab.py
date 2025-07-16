@@ -23,7 +23,6 @@ else:
 
 max_tokens = 6000
 
-# sampling_params will later be used to pass the parameters to Llama Stack Agents/Inference APIs
 sampling_params = {
     'strategy': strategy,
     'max_tokens': max_tokens,
@@ -36,7 +35,7 @@ def get_llama_stack_client():
     base_url = environ.get('LLAMA_STACK_URL')
     client = LlamaStackClient(base_url=base_url)
 
-    print('Instantianted Llama Stack client')
+    print('Instantiated Llama Stack client')
     return client
 
 
@@ -46,17 +45,18 @@ def get_agent(instructions, *tools):
         client, 
         model=model_id,
         instructions=instructions,
-        tools=tools,
+        tools=list(tools),
         sampling_params=sampling_params
     )
 
-    print('Instantiated agent')
+    print(f'Instantiated agent')
     return agent
 
 
-def run_session(agent, session_name, *user_prompts):
+def run_session(agent, session_name, user_prompts):
     session_id = agent.create_session(session_name)
     print(f'Created new session {session_name}')
+    print(f'Looping over user prompts: {user_prompts}')
     for prompt in user_prompts:
         print("\n"+"="*50)
         cprint(f"Processing user query: {prompt}", "blue")
@@ -69,11 +69,7 @@ def run_session(agent, session_name, *user_prompts):
                 }
             ],
             session_id=session_id,
-            stream=stream
+            stream='True'
         )
-    
-        if stream:
-            for log in EventLogger().log(response):
-                log.print()
-        else:
-            step_printer(response.steps)
+        for log in EventLogger().log(response):
+            log.print()
