@@ -2,10 +2,10 @@ apiVersion: tekton.dev/v1
 kind: Pipeline
 metadata:
   name: java-app-build
-  namespace: demo-application
+  namespace: {{ .Values.namespace }}
 spec:
   params:
-  - default: {{ .Values.image_name }} 
+  - default: {{ .Values.registry }}/{{ .Values.namespace }}/{{ .Values.application_name }} 
     name: IMAGE_NAME
     type: string
   - default: {{ .Values.git_url }}
@@ -46,7 +46,7 @@ spec:
       value: $(params.IMAGE_NAME)
     - name: TLS_VERIFY
       value: "false"
-    - name: SUBDIRECTORY
+    - name: CONTEXT
       value: $(params.SUBDIRECTORY)
     runAfter:
     - fetch-repository
@@ -62,22 +62,6 @@ spec:
     workspaces:
     - name: source
       workspace: shared-workspace
-  - name: deploy
-    params:
-    - name: SCRIPT
-      value: |
-        oc new-app --docker-image $(params.IMAGE_NAME)
-    runAfter:
-    - build
-    taskRef:
-      params:
-      - name: kind
-        value: task
-      - name: name
-        value: openshift-client
-      - name: namespace
-        value: openshift-pipelines
-      resolver: cluster
   finally:
   - name: triggeragent
     params:
@@ -94,5 +78,6 @@ spec:
           then
             echo "Looks like your pipeline failed dumbass, calling Doctor Mix"
             curl -i -H "Content-Type: application/json" -X POST -d '{"namespace":"{{ .Release.Namespace }}"}' {{ .Values.agent_endpoint }}
+          fi 
   workspaces:
   - name: shared-workspace
