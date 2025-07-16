@@ -1,0 +1,17 @@
+---
+resources:
+  - namespaces.yaml
+
+helmGlobals:
+  chartHome: ../helm
+
+helmCharts:
+  - name: cluster-observability-operator
+    includeCRDs: true
+    releaseName: 
+    valuesFile: values-v0.yaml
+
+  - name: olm-v1-chart
+    includeCRDs: true
+    releaseName: olm-v1-chart
+    valuesFile: values-v1.yaml

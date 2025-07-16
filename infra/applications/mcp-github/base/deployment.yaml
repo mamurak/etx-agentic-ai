@@ -26,6 +26,8 @@ spec:
         env:
         - name: NPM_CONFIG_CACHE
           value: /tmp/.npm
+        - name: GITHUB_MCP_SERVER_E2E_DEBUG
+          value: "true"
         - name: GITHUB_TOKEN
           valueFrom:
             secretKeyRef:
