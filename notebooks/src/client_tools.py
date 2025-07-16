@@ -1,40 +1,28 @@
+from kubernetes.client.api_client import ApiClient
+from kubernetes.client.rest import ApiException
+from kubernetes.client import CoreV1Api
+from kubernetes.config import load_incluster_config
 from llama_stack_client.lib.agents.client_tool import client_tool
-import geocoder
+
+
+load_incluster_config()
+api_instance = CoreV1Api(ApiClient())
+
 
 @client_tool
-def torchtune(query: str = "torchtune"):
-    """
-    Answer information about torchtune.
-
-    :param query: The query to use for querying the internet
-    :returns: Information about torchtune
-    """
-    dummy_response = """
-            torchtune is a PyTorch library for easily authoring, finetuning and experimenting with LLMs.
-
-            torchtune provides:
-
-            PyTorch implementations of popular LLMs from Llama, Gemma, Mistral, Phi, and Qwen model families
-            Hackable training recipes for full finetuning, LoRA, QLoRA, DPO, PPO, QAT, knowledge distillation, and more
-            Out-of-the-box memory efficiency, performance improvements, and scaling with the latest PyTorch APIs
-            YAML configs for easily configuring training, evaluation, quantization or inference recipes
-            Built-in support for many popular dataset formats and prompt templates
-    """
-    return dummy_response
-
-@client_tool
-def get_location(query: str = "location"):
+def get_pod_log(pod_name: str, namespace: str, container_name: str):
     """
     Provide the location upon request.
 
-    :param query: The query from user
-    :returns: Information about user location
+    :param pod_name: The name of the target pod
+    :param namespace: The name of the target namespace
+    :param container_name: The name of the target container within the target pod
+    :returns: Logs of the target pod
     """
     try:
-        g = geocoder.ip('me')
-        if g.ok:
-            return f"Your current location is: {g.city}, {g.state}, {g.country}" # can be modified to return latitude and longitude if needed
-        else:
-            return "Unable to determine your location"
-    except Exception as e:
-        return f"Error getting location: {str(e)}"
+        api_response = api_instance.read_namespaced_pod_log(
+            pod_name, namespace, container=container_name, tail_lines=100
+        )
+        return api_response
+    except ApiException as e:
+        print("Exception when calling CoreV1Api->read_namespaced_pod_log: %s\n" % e)
