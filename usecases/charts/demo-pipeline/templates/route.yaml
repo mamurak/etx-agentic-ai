@@ -1,0 +1,17 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: undertow-servlet
+    app.kubernetes.io/component: undertow-servlet
+    app.kubernetes.io/instance: undertow-servlet
+  name: {{ .Values.application_name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  port:
+    targetPort: 8080-tcp
+  to:
+    kind: Service
+    name: undertow-servlet
+    weight: 100
+  wildcardPolicy: None

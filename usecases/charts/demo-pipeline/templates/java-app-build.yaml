@@ -1,0 +1,83 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: java-app-build
+  namespace: {{ .Values.namespace }}
+spec:
+  params:
+  - default: {{ .Values.registry }}/{{ .Values.namespace }}/{{ .Values.application_name }} 
+    name: IMAGE_NAME
+    type: string
+  - default: {{ .Values.git_url }}
+    name: GIT_REPO
+    type: string
+  - default: {{ .Values.git_revision }} 
+    name: GIT_REVISION
+    type: string
+  - default: {{ .Values.git_subdirectory }} 
+    name: SUBDIRECTORY
+    type: string
+  tasks:
+  - name: fetch-repository
+    params:
+    - name: URL
+      value: $(params.GIT_REPO)
+    - name: REVISION
+      value: $(params.GIT_REVISION)
+    - name: SUBDIRECTORY
+      value: ""
+    - name: DELETE_EXISTING
+      value: "true"
+    taskRef:
+      params:
+      - name: kind
+        value: task
+      - name: name
+        value: git-clone
+      - name: namespace
+        value: openshift-pipelines
+      resolver: cluster
+    workspaces:
+    - name: output
+      workspace: shared-workspace
+  - name: build
+    params:
+    - name: IMAGE
+      value: $(params.IMAGE_NAME)
+    - name: TLS_VERIFY
+      value: "false"
+    - name: CONTEXT
+      value: $(params.SUBDIRECTORY)
+    runAfter:
+    - fetch-repository
+    taskRef:
+      params:
+      - name: kind
+        value: task
+      - name: name
+        value: s2i-java
+      - name: namespace
+        value: openshift-pipelines
+      resolver: cluster
+    workspaces:
+    - name: source
+      workspace: shared-workspace
+  finally:
+  - name: triggeragent
+    params:
+    - name: aggregateTaskStatus
+      value: "$(tasks.status)"
+    taskSpec:
+      params:
+      - name: aggregateTaskStatus
+      steps: 
+      - name: check-task-status
+        image: ubi9/ubi
+        script: |
+          if [ $(params.aggregateTaskStatus) == "Failed" ]
+          then
+            echo "Looks like your pipeline failed dumbass, calling Doctor Mix"
+            curl -i -H "Content-Type: application/json" -X POST -d '{"namespace":"{{ .Release.Namespace }}"}' {{ .Values.agent_endpoint }}
+          fi 
+  workspaces:
+  - name: shared-workspace
