@@ -10,6 +10,19 @@ spec:
   href: https://global-policy-server-openshift-gitops.apps.$CLUSTER_NAME.$BASE_DOMAIN
   location: ApplicationMenu
   text: argocd
+---
+apiVersion: console.openshift.io/v1
+kind: ConsoleLink
+metadata:
+  name: llama-stack-playground
+spec:
+  applicationMenu:
+    section: GenAI
+    imageURL: https://avatars.githubusercontent.com/u/153379578?s=48&v=4
+  href: https://llama-stack-playground-default.apps.$CLUSTER_NAME.$BASE_DOMAIN
+  location: ApplicationMenu
+  text: llama-stack-playground
+
 # ---
 # apiVersion: console.openshift.io/v1
 # kind: ConsoleLink
