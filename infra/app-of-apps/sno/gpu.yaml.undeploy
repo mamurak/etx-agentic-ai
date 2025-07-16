@@ -27,7 +27,7 @@ spec:
         namespace: nvidia-gpu-operator
       source:
         repoURL: https://github.com/redhat-ai-services/etx-agentic-ai.git
-        path: gitops/applications/gpu/overlay
+        path: infra/applications/gpu/overlay
         plugin:
           name: argocd-novault-plugin-kustomize
         targetRevision: main

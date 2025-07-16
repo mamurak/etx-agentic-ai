@@ -27,7 +27,7 @@ spec:
         namespace: redhat-ods-operator
       source:
         repoURL: https://github.com/redhat-ai-services/etx-agentic-ai.git
-        path: gitops/applications/mcp-openshift/overlay
+        path: infra/applications/mcp-openshift/overlay
         plugin:
           name: argocd-novault-plugin-kustomize
         targetRevision: main
