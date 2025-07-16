@@ -27,7 +27,7 @@ spec:
         namespace: vault
       source:
         repoURL: https://github.com/redhat-ai-services/etx-agentic-ai.git
-        path: gitops/applications/vault
+        path: infra/applications/vault
         plugin:
           name: argocd-novault-plugin-kustomize
         targetRevision: main

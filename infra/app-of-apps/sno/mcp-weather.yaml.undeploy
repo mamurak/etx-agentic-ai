@@ -27,7 +27,7 @@ spec:
         namespace: redhat-ods-operator
       source:
         repoURL: https://github.com/redhat-ai-services/etx-agentic-ai.git
-        path: gitops/applications/mcp-weather/overlay
+        path: infra/applications/mcp-weather/overlay
         plugin:
           name: argocd-novault-plugin-kustomize
         targetRevision: main

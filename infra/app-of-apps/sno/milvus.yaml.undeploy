@@ -27,7 +27,7 @@ spec:
         namespace: milvus
       source:
         repoURL: https://github.com/redhat-ai-services/etx-agentic-ai.git
-        path: gitops/applications/milvus/overlay
+        path: infra/applications/milvus/overlay
         plugin:
           name: argocd-novault-plugin-kustomize
         targetRevision: main

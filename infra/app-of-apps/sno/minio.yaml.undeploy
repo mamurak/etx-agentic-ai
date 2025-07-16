@@ -27,7 +27,7 @@ spec:
         namespace: minio
       source:
         repoURL: https://github.com/redhat-ai-services/etx-agentic-ai.git
-        path: gitops/applications/minio/overlay
+        path: infra/applications/minio/overlay
         plugin:
           name: argocd-novault-plugin-kustomize
         targetRevision: main

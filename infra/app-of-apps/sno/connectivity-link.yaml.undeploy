@@ -27,7 +27,7 @@ spec:
         namespace: connectivity-link
       source:
         repoURL: https://github.com/redhat-ai-services/etx-agentic-ai.git
-        path: gitops/applications/connectivity-link/overlay/sno
+        path: infra/applications/connectivity-link/overlay/sno
         plugin:
           name: argocd-novault-plugin-kustomize
         targetRevision: main

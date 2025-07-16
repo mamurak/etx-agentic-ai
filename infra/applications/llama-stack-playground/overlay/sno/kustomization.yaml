@@ -1,5 +1,5 @@
 ---
-namespace: agent-demo
+namespace: default
 
 resources:
   - ../../base

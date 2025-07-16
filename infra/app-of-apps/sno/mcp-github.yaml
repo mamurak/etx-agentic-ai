@@ -27,7 +27,7 @@ spec:
         namespace: redhat-ods-operator
       source:
         repoURL: https://github.com/redhat-ai-services/etx-agentic-ai.git
-        path: gitops/applications/mcp-github/overlay
+        path: infra/applications/mcp-github/overlay
         plugin:
           name: argocd-vault-plugin-kustomize
         targetRevision: main

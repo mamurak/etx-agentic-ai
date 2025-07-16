@@ -27,7 +27,7 @@ spec:
         namespace: perf-enhancements
       source:
         repoURL: https://github.com/redhat-ai-services/etx-agentic-ai.git
-        path: gitops/applications/perf-enhancements
+        path: infra/applications/perf-enhancements
         plugin:
           name: argocd-novault-plugin-kustomize
         targetRevision: main

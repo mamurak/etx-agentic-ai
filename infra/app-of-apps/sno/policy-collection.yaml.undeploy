@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/redhat-ai-services/etx-agentic-ai.git
-    path: gitops/applications/policy-collection/overlays/sno
+    path: infra/applications/policy-collection/overlays/sno
     targetRevision: main
     plugin:
       name: argocd-vault-plugin-kustomize

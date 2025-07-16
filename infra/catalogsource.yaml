@@ -1,0 +1,416 @@
+apiVersion: v1
+items:
+- apiVersion: operators.coreos.com/v1alpha1
+  kind: CatalogSource
+  metadata:
+    creationTimestamp: "2025-07-14T11:55:11Z"
+    generation: 1
+    name: redhat-operators-snapshot-cert-manager
+    namespace: cert-manager-operator
+    resourceVersion: "2067640"
+    uid: 56f7f827-736f-45d0-8b7d-40f3693cfdf1
+  spec:
+    displayName: redhat-operators-snapshot-cert-manager
+    image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog:v4.18_2025_06_23
+    publisher: Red Hat AgnosticD
+    sourceType: grpc
+  status:
+    connectionState:
+      address: redhat-operators-snapshot-cert-manager.cert-manager-operator.svc:50051
+      lastConnect: "2025-07-16T03:54:01Z"
+      lastObservedState: READY
+    registryService:
+      createdAt: "2025-07-14T11:55:12Z"
+      port: "50051"
+      protocol: grpc
+      serviceName: redhat-operators-snapshot-cert-manager
+      serviceNamespace: cert-manager-operator
+- apiVersion: operators.coreos.com/v1alpha1
+  kind: CatalogSource
+  metadata:
+    annotations:
+      openshift.io/required-scc: restricted-v2
+      operatorframework.io/managed-by: marketplace-operator
+      target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+    creationTimestamp: "2025-07-14T11:25:35Z"
+    generation: 1
+    name: certified-operators
+    namespace: openshift-marketplace
+    resourceVersion: "2111934"
+    uid: 69722dd3-2a3d-4c14-a212-cce081630222
+  spec:
+    displayName: Certified Operators
+    grpcPodConfig:
+      extractContent:
+        cacheDir: /tmp/cache
+        catalogDir: /configs
+      memoryTarget: 40Mi
+      nodeSelector:
+        kubernetes.io/os: linux
+        node-role.kubernetes.io/master: ""
+      priorityClassName: system-cluster-critical
+      securityContextConfig: restricted
+      tolerations:
+      - effect: NoSchedule
+        key: node-role.kubernetes.io/master
+        operator: Exists
+      - effect: NoExecute
+        key: node.kubernetes.io/unreachable
+        operator: Exists
+        tolerationSeconds: 120
+      - effect: NoExecute
+        key: node.kubernetes.io/not-ready
+        operator: Exists
+        tolerationSeconds: 120
+    icon:
+      base64data: ""
+      mediatype: ""
+    image: registry.redhat.io/redhat/certified-operator-index:v4.18
+    priority: -200
+    publisher: Red Hat
+    sourceType: grpc
+    updateStrategy:
+      registryPoll:
+        interval: 10m
+  status:
+    connectionState:
+      address: certified-operators.openshift-marketplace.svc:50051
+      lastConnect: "2025-07-16T03:46:03Z"
+      lastObservedState: READY
+    latestImageRegistryPoll: "2025-07-16T04:44:25Z"
+    registryService:
+      createdAt: "2025-07-14T11:33:18Z"
+      port: "50051"
+      protocol: grpc
+      serviceName: certified-operators
+      serviceNamespace: openshift-marketplace
+- apiVersion: operators.coreos.com/v1alpha1
+  kind: CatalogSource
+  metadata:
+    annotations:
+      openshift.io/required-scc: restricted-v2
+      operatorframework.io/managed-by: marketplace-operator
+      target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+    creationTimestamp: "2025-07-14T11:25:35Z"
+    generation: 1
+    name: community-operators
+    namespace: openshift-marketplace
+    resourceVersion: "2109370"
+    uid: f6bf0b52-2efc-42f7-aee1-781d2f3adf2b
+  spec:
+    displayName: Community Operators
+    grpcPodConfig:
+      extractContent:
+        cacheDir: /tmp/cache
+        catalogDir: /configs
+      memoryTarget: 120Mi
+      nodeSelector:
+        kubernetes.io/os: linux
+        node-role.kubernetes.io/master: ""
+      priorityClassName: system-cluster-critical
+      securityContextConfig: restricted
+      tolerations:
+      - effect: NoSchedule
+        key: node-role.kubernetes.io/master
+        operator: Exists
+      - effect: NoExecute
+        key: node.kubernetes.io/unreachable
+        operator: Exists
+        tolerationSeconds: 120
+      - effect: NoExecute
+        key: node.kubernetes.io/not-ready
+        operator: Exists
+        tolerationSeconds: 120
+    icon:
+      base64data: ""
+      mediatype: ""
+    image: registry.redhat.io/redhat/community-operator-index:v4.18
+    priority: -400
+    publisher: Red Hat
+    sourceType: grpc
+    updateStrategy:
+      registryPoll:
+        interval: 10m
+  status:
+    connectionState:
+      address: community-operators.openshift-marketplace.svc:50051
+      lastConnect: "2025-07-16T03:49:42Z"
+      lastObservedState: READY
+    latestImageRegistryPoll: "2025-07-16T04:41:30Z"
+    registryService:
+      createdAt: "2025-07-14T11:33:18Z"
+      port: "50051"
+      protocol: grpc
+      serviceName: community-operators
+      serviceNamespace: openshift-marketplace
+- apiVersion: operators.coreos.com/v1alpha1
+  kind: CatalogSource
+  metadata:
+    annotations:
+      openshift.io/required-scc: restricted-v2
+      operatorframework.io/managed-by: marketplace-operator
+      target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+    creationTimestamp: "2025-07-14T11:25:35Z"
+    generation: 1
+    name: redhat-marketplace
+    namespace: openshift-marketplace
+    resourceVersion: "2113049"
+    uid: f542c256-2e92-4842-8b44-c0e58886bc14
+  spec:
+    displayName: Red Hat Marketplace
+    grpcPodConfig:
+      extractContent:
+        cacheDir: /tmp/cache
+        catalogDir: /configs
+      memoryTarget: 20Mi
+      nodeSelector:
+        kubernetes.io/os: linux
+        node-role.kubernetes.io/master: ""
+      priorityClassName: system-cluster-critical
+      securityContextConfig: restricted
+      tolerations:
+      - effect: NoSchedule
+        key: node-role.kubernetes.io/master
+        operator: Exists
+      - effect: NoExecute
+        key: node.kubernetes.io/unreachable
+        operator: Exists
+        tolerationSeconds: 120
+      - effect: NoExecute
+        key: node.kubernetes.io/not-ready
+        operator: Exists
+        tolerationSeconds: 120
+    icon:
+      base64data: ""
+      mediatype: ""
+    image: registry.redhat.io/redhat/redhat-marketplace-index:v4.18
+    priority: -300
+    publisher: Red Hat
+    sourceType: grpc
+    updateStrategy:
+      registryPoll:
+        interval: 10m
+  status:
+    connectionState:
+      address: redhat-marketplace.openshift-marketplace.svc:50051
+      lastConnect: "2025-07-16T03:47:25Z"
+      lastObservedState: READY
+    latestImageRegistryPoll: "2025-07-16T04:45:39Z"
+    registryService:
+      createdAt: "2025-07-14T11:33:20Z"
+      port: "50051"
+      protocol: grpc
+      serviceName: redhat-marketplace
+      serviceNamespace: openshift-marketplace
+- apiVersion: operators.coreos.com/v1alpha1
+  kind: CatalogSource
+  metadata:
+    annotations:
+      openshift.io/required-scc: restricted-v2
+      operatorframework.io/managed-by: marketplace-operator
+      target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+    creationTimestamp: "2025-07-14T11:25:35Z"
+    generation: 1
+    name: redhat-operators
+    namespace: openshift-marketplace
+    resourceVersion: "2111420"
+    uid: 032b6161-5adf-4071-9330-b5737331951c
+  spec:
+    displayName: Red Hat Operators
+    grpcPodConfig:
+      extractContent:
+        cacheDir: /tmp/cache
+        catalogDir: /configs
+      memoryTarget: 30Mi
+      nodeSelector:
+        kubernetes.io/os: linux
+        node-role.kubernetes.io/master: ""
+      priorityClassName: system-cluster-critical
+      securityContextConfig: restricted
+      tolerations:
+      - effect: NoSchedule
+        key: node-role.kubernetes.io/master
+        operator: Exists
+      - effect: NoExecute
+        key: node.kubernetes.io/unreachable
+        operator: Exists
+        tolerationSeconds: 120
+      - effect: NoExecute
+        key: node.kubernetes.io/not-ready
+        operator: Exists
+        tolerationSeconds: 120
+    icon:
+      base64data: ""
+      mediatype: ""
+    image: registry.redhat.io/redhat/redhat-operator-index:v4.18
+    priority: -100
+    publisher: Red Hat
+    sourceType: grpc
+    updateStrategy:
+      registryPoll:
+        interval: 10m
+  status:
+    connectionState:
+      address: redhat-operators.openshift-marketplace.svc:50051
+      lastConnect: "2025-07-16T03:49:24Z"
+      lastObservedState: READY
+    latestImageRegistryPoll: "2025-07-16T04:43:51Z"
+    registryService:
+      createdAt: "2025-07-14T11:33:21Z"
+      port: "50051"
+      protocol: grpc
+      serviceName: redhat-operators
+      serviceNamespace: openshift-marketplace
+- apiVersion: operators.coreos.com/v1alpha1
+  kind: CatalogSource
+  metadata:
+    creationTimestamp: "2025-07-14T12:05:32Z"
+    generation: 1
+    name: redhat-operators-snapshot-nfd
+    namespace: openshift-nfd
+    resourceVersion: "2067612"
+    uid: d6288a0a-97ff-447f-aa25-cbfcc7e90358
+  spec:
+    displayName: redhat-operators-snapshot-nfd
+    image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog:v4.18_2025_06_23
+    publisher: Red Hat AgnosticD
+    sourceType: grpc
+  status:
+    connectionState:
+      address: redhat-operators-snapshot-nfd.openshift-nfd.svc:50051
+      lastConnect: "2025-07-16T03:54:00Z"
+      lastObservedState: READY
+    registryService:
+      createdAt: "2025-07-14T12:05:35Z"
+      port: "50051"
+      protocol: grpc
+      serviceName: redhat-operators-snapshot-nfd
+      serviceNamespace: openshift-nfd
+- apiVersion: operators.coreos.com/v1alpha1
+  kind: CatalogSource
+  metadata:
+    creationTimestamp: "2025-07-14T12:14:59Z"
+    generation: 1
+    name: redhat-operators-snapshot-authorino
+    namespace: openshift-operators
+    resourceVersion: "2067704"
+    uid: 39e6fda4-e180-4a02-8dc6-48e2b21d27a0
+  spec:
+    displayName: redhat-operators-snapshot-authorino
+    image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog:v4.18_2025_06_23
+    publisher: Red Hat AgnosticD
+    sourceType: grpc
+  status:
+    connectionState:
+      address: redhat-operators-snapshot-authorino.openshift-operators.svc:50051
+      lastConnect: "2025-07-16T03:54:06Z"
+      lastObservedState: READY
+    registryService:
+      createdAt: "2025-07-14T12:15:05Z"
+      port: "50051"
+      protocol: grpc
+      serviceName: redhat-operators-snapshot-authorino
+      serviceNamespace: openshift-operators
+- apiVersion: operators.coreos.com/v1alpha1
+  kind: CatalogSource
+  metadata:
+    creationTimestamp: "2025-07-14T12:03:01Z"
+    generation: 1
+    name: redhat-operators-snapshot-gitops
+    namespace: openshift-operators
+    resourceVersion: "2067684"
+    uid: ee053c4c-fac3-457d-9b04-2de60745404e
+  spec:
+    displayName: redhat-operators-snapshot-gitops
+    image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog:v4.18_2025_06_23
+    publisher: Red Hat AgnosticD
+    sourceType: grpc
+  status:
+    connectionState:
+      address: redhat-operators-snapshot-gitops.openshift-operators.svc:50051
+      lastConnect: "2025-07-16T03:54:05Z"
+      lastObservedState: READY
+    registryService:
+      createdAt: "2025-07-14T12:03:09Z"
+      port: "50051"
+      protocol: grpc
+      serviceName: redhat-operators-snapshot-gitops
+      serviceNamespace: openshift-operators
+- apiVersion: operators.coreos.com/v1alpha1
+  kind: CatalogSource
+  metadata:
+    creationTimestamp: "2025-07-14T12:11:46Z"
+    generation: 1
+    name: redhat-operators-snapshot-serverless
+    namespace: openshift-operators
+    resourceVersion: "2067614"
+    uid: e5644c3d-c15e-49c0-b0c1-5412a05168f9
+  spec:
+    displayName: redhat-operators-snapshot-serverless
+    image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog:v4.18_2025_06_23
+    publisher: Red Hat AgnosticD
+    sourceType: grpc
+  status:
+    connectionState:
+      address: redhat-operators-snapshot-serverless.openshift-operators.svc:50051
+      lastConnect: "2025-07-16T03:54:00Z"
+      lastObservedState: READY
+    registryService:
+      createdAt: "2025-07-14T12:11:50Z"
+      port: "50051"
+      protocol: grpc
+      serviceName: redhat-operators-snapshot-serverless
+      serviceNamespace: openshift-operators
+- apiVersion: operators.coreos.com/v1alpha1
+  kind: CatalogSource
+  metadata:
+    creationTimestamp: "2025-07-14T12:13:21Z"
+    generation: 1
+    name: servicemeshoperator-catalogsource
+    namespace: openshift-operators
+    resourceVersion: "2067653"
+    uid: 46f577e2-ae9b-4399-98dd-d62c64f1af72
+  spec:
+    displayName: servicemeshoperator-catalogsource
+    image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog:v4.18_2025_06_23
+    publisher: Red Hat AgnosticD
+    sourceType: grpc
+  status:
+    connectionState:
+      address: servicemeshoperator-catalogsource.openshift-operators.svc:50051
+      lastConnect: "2025-07-16T03:54:03Z"
+      lastObservedState: READY
+    registryService:
+      createdAt: "2025-07-14T12:13:26Z"
+      port: "50051"
+      protocol: grpc
+      serviceName: servicemeshoperator-catalogsource
+      serviceNamespace: openshift-operators
+- apiVersion: operators.coreos.com/v1alpha1
+  kind: CatalogSource
+  metadata:
+    creationTimestamp: "2025-07-14T12:16:49Z"
+    generation: 1
+    name: redhat-operators-snapshot-serverless
+    namespace: redhat-ods-operator
+    resourceVersion: "2067675"
+    uid: 71e5746b-194b-4c55-aba8-1bf11c243fa6
+  spec:
+    displayName: redhat-operators-snapshot-serverless
+    image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog:v4.18_2025_06_23
+    publisher: Red Hat AgnosticD
+    sourceType: grpc
+  status:
+    connectionState:
+      address: redhat-operators-snapshot-serverless.redhat-ods-operator.svc:50051
+      lastConnect: "2025-07-16T03:54:05Z"
+      lastObservedState: READY
+    registryService:
+      createdAt: "2025-07-14T12:16:50Z"
+      port: "50051"
+      protocol: grpc
+      serviceName: redhat-operators-snapshot-serverless
+      serviceNamespace: redhat-ods-operator
+kind: List
+metadata:
+  resourceVersion: ""

@@ -27,7 +27,7 @@ spec:
         namespace: storage
       source:
         repoURL: https://github.com/redhat-ai-services/etx-agentic-ai.git
-        path: gitops/applications/storage/overlay/sno
+        path: infra/applications/storage/overlay/sno
         plugin:
           name: argocd-novault-plugin-kustomize
         targetRevision: main

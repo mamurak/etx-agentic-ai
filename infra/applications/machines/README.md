@@ -46,7 +46,7 @@ export IAM_PROFILE="${CLUSTER_ID}-${ROLE}"-profile        # sno-rpvxz-worker-pro
 ```
 
 ```bash
-cat /home/mike/git/rhoai-policy-collection/gitops/applications/machines/machineset.yaml | envsubst | oc apply -f-
+cat /home/mike/git/rhoai-policy-collection/infra/applications/machines/machineset.yaml | envsubst | oc apply -f-
 ```
 
 ```bash
