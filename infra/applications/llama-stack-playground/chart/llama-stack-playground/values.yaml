@@ -20,6 +20,7 @@ podAnnotations: {}
 
 podSecurityContext:
   runAsNonRoot: true
+   runAsUser: 1001
   # Remove specific UID/GID to let OpenShift assign them
   # fsGroup: 1001
 
