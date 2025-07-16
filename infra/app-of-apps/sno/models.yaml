@@ -29,7 +29,7 @@ spec:
         repoURL: https://github.com/redhat-ai-services/etx-agentic-ai.git
         path: infra/applications/models/overlay
         plugin:
-          name: argocd-plugin-kustomize
+          name: argocd-vault-plugin-kustomize
         targetRevision: main
       syncPolicy:
         automated:
