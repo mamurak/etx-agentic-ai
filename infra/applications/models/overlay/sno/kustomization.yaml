@@ -1,7 +1,8 @@
 ---
 resources:
-  - ../../base/deepseek-r1
+#  - ../../base/deepseek-r1
 #  - ../../base/finetunes
 #  - ../../base/granite
-  - ../../base/llama3
+#  - ../../base/llama3
 #  - ../../base/qwen
+  - ../../base/maas
