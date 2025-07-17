@@ -2,6 +2,7 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: llama-stack-config
+  namespace: default
 data:
   run.yaml: |
     # Llama Stack Configuration
@@ -61,14 +62,14 @@ data:
         config:
           url: "https://llama-3-2-3b-maas-apicast-production.apps.prod.rhoai.rh-aiservices-bu.com:443/v1"
           max_tokens: 110000
-          api_token: secret:llama-3-2-3b:apiKey
+          api_token: ${env.LLAMA_3_2_3B_API_TOKEN}
           tls_verify: true
       - provider_id: vllm-llama-4-guard
         provider_type: "remote::vllm"
         config:
           url: "https://llama-4-scout-17b-16e-w4a16-maas-apicast-production.apps.prod.rhoai.rh-aiservices-bu.com:443/v1"
           max_tokens: 110000
-          api_token: "cef9027d28f12c6cb8c8c1390ff901ef"
+          api_token: ${env.LLAMA_4_SCOUT_17B_16E_W4A16_API_TOKEN}
           tls_verify: true  
       tool_runtime:
       - provider_id: model-context-protocol
@@ -81,7 +82,7 @@ data:
       - provider_id: tavily-search
         provider_type: remote::tavily-search
         config:
-          api_key: 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
+          api_key: ${env.TAVILY_API_KEY}
           max_results: 3
       telemetry:
       - provider_id: meta-reference
