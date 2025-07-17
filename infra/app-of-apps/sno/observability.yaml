@@ -27,7 +27,7 @@ spec:
         namespace: observability
       source:
         repoURL: https://github.com/redhat-ai-services/etx-agentic-ai.git
-        path: infra/applications/observability/overlay/base
+        path: infra/applications/observability/base
         plugin:
           name: argocd-novault-plugin-kustomize
         targetRevision: main
