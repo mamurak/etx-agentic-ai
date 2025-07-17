@@ -22,7 +22,7 @@ sampling_params = {
     "strategy": strategy,
     "max_tokens": max_tokens,
 }
-print(f"Inference Parameters:\n\tModel: {model_id}\n\tSampling Parameters: {sampling_params}\n\tstream: {stream}")
+print(f"Inference Parameters:\n\tModel: {model_id}\n\tSampling Parameters: {sampling_params}")
 
 
 client = LlamaStackClient(
@@ -45,7 +45,7 @@ agent = ReActAgent(
         "json_schema": ReActOutput.model_json_schema(),
     },
     sampling_params={"max_tokens":512},
-    max_infer_iters=5
+    max_infer_iters=10
 )
 print('instantiated ReAct agent')
 
