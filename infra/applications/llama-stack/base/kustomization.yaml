@@ -1,4 +1,4 @@
 ---
 resources:
-#  - configmap.yaml
+  - configmap.yaml
   - llama-stack.yaml
