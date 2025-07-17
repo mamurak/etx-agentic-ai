@@ -1,7 +1,19 @@
-= Prototyping with MCP
+= Prototyping with Tool Calling
+
+== Basic Tool Calling
 
 Open up the following notebook in your workspace.
 
-This notebook is for developers who are already familiar with [basic agent workflows](3-agents-tools/2-simple-agent-with-websearch). Here, we will highlight more advanced use cases for agents where a single tool call is insufficient to complete the required task.
+In this notebook we will introduce how to build a simple agent using Llama Stack's agent framework, enhanced with a single tool: the builtin web search tool.
 
-We will also use [MCP tools](https://github.com/modelcontextprotocol/servers) (which can be deployed onto an OpenShift cluster) throughout this demo to show users how to extend their agents beyond Llama Stacks's current builtin tools and connect to many different services and data sources to build their own custom agents.
+We will cover the agent basics. This is an important step toward developing a more capable and autonomous agent.
+
+== Prompt Chaining
+
+Open up the following notebook in your workspace.
+
+In this notebook we will build on the simple agent introduced in [simple agent workflows](3-agents-tools/2-simple-agent-with-websearch). This tutorial continues the agent-focused section of our series by introducing techniques that make the agent smarter and more autonomous: **Prompt Chaining** and the **ReAct (Reasoning + Acting) framework**.
+
+These approaches allow the agent to complete multi-step tasks, dynamically choose tools, and adjust its behavior based on context.
+
+== ReAct
