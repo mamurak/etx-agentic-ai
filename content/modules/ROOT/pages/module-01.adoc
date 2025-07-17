@@ -1,5 +1,67 @@
+= Pre-requisites to get started
+
+=== Team Setup
+* Teams of 2 people per cluster
+* Login credentials for the OpenShift cluster
+* Fork of the Git repository
+
+=== Cluster Environment
+The workshop environment includes:
+* Red Hat OpenShift AI (RHOAI) with GPU support
+* Node Feature Discovery (NFD) for GPU detection
+* Bootstrap components:
+** Advanced Cluster Management (ACM) + ArgoCD
+** Vault for secrets management
+** Observability stack
+** LLM Granite model with MaaS integration
+** Pipeline infrastructure in failing state
+** Containerfile + BuildConfig/Tekton Pipeline for as a Service (initially disabled)
+** Workbench creation with RBAC
+
+=== Required Applications
+* Vault setup with API tokens:
+** Tavily search token
+** GitHub token
+** MaaS credentials
+* Workbench environment for development
+* Access to the use case scenario and supporting documentation
+
+=== Technical Knowledge
+* Basic understanding of OpenShift/Kubernetes concepts
+* Familiarity with Python programming
+* Knowledge of containerization concepts
+* Basic understanding of CI/CD pipelines
+
 = The Use Case
 
 Acme Inc. is facing issues within their CI/CD system, and they're asking you to build a Gen AI based solution for them.
 
 == The Challenge
+
+Acme Inc. has a critical CI/CD pipeline that frequently fails due to various issues such as:
+* Build failures due to dependency conflicts
+* Deployment errors caused by configuration mismatches
+* Resource constraints leading to timeouts
+* Integration test failures requiring manual investigation
+
+The current process requires developers to:
+* Manually investigate error logs
+* Search through documentation for solutions
+* Create GitHub issues for tracking problems
+* Manually restart failed pipelines
+* Coordinate with team members for resolution
+
+This manual intervention is:
+* Time-consuming and delays releases
+* Error-prone due to human oversight
+* Not scalable as the team grows
+* Lacking consistent documentation of solutions
+
+== The Solution: AI-Powered CI/CD Agent
+
+We will build an intelligent agent that can:
+* Detect and analyze CI/CD failures
+* Interact with OpenShift to query cluster resources and pod status
+* Search for relevant solutions using web search and documentation
+* Provide actionable recommendations to developers
+* Create GitHub issue in the specified repository for tracking
