@@ -22,7 +22,6 @@ sampling_params = {
     "strategy": strategy,
     "max_tokens": max_tokens,
 }
-stream = False
 print(f"Inference Parameters:\n\tModel: {model_id}\n\tSampling Parameters: {sampling_params}\n\tstream: {stream}")
 
 
@@ -46,7 +45,7 @@ agent = ReActAgent(
         "json_schema": ReActOutput.model_json_schema(),
     },
     sampling_params={"max_tokens":512},
-    max_infer_iters=50
+    max_infer_iters=5
 )
 print('instantiated ReAct agent')
 
@@ -74,7 +73,7 @@ def run_agent(pod_name, namespace):
                 }
             ],
             session_id=session_id,
-            stream=stream
+            stream=False
         )
         if stream:
             for log in EventLogger().log(response):
