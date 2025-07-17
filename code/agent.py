@@ -21,11 +21,17 @@ Whenever a tool is called, be sure to return the Response in a friendly and help
 """
 temperature = float(environ.get('TEMPERATURE', '0.0'))
 strategy = {"type": "greedy"}
-max_tokens = int(environ.get('MAX_TOKENS', '5000'))
+max_tokens = int(environ.get('MAX_TOKENS', '512'))
 client_timeout = float(environ.get('CLIENT_TIMEOUT', '600.0'))
 max_infer_iterations = int(environ.get('MAX_INFER_ITERATIONS', '10'))
 
-print(f"Inference Parameters:\n\tModel: {model_id}\n\tSampling Parameters: {sampling_params}")
+print(
+    f'Inference Parameters:\n\tModel: {model_id}\n'
+    f'Llama Stack URL: {llama_stack_url}\n'
+    f'Client timeout: {client_timeout}\n'
+    f'Max infer iterations: {max_infer_iterations}\n'
+    f'Temperature: {temperature}'
+)
 
 
 client = LlamaStackClient(
@@ -47,7 +53,7 @@ agent = ReActAgent(
         "type": "json_schema",
         "json_schema": ReActOutput.model_json_schema(),
     },
-    sampling_params={"max_tokens":512},
+    sampling_params={"max_tokens":max_tokens},
     max_infer_iters=max_infer_iterations
 )
 print('instantiated ReAct agent')
