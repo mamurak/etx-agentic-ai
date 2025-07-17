@@ -8,10 +8,40 @@ helmGlobals:
 helmCharts:
   - name: cluster-observability-operator
     includeCRDs: true
-    releaseName: 
-    valuesFile: values-v0.yaml
+    releaseName: cluster-observability-operator
+    valuesFile: values.yaml
 
-  - name: olm-v1-chart
+  - name: grafana-operator
     includeCRDs: true
-    releaseName: olm-v1-chart
-    valuesFile: values-v1.yaml
+    releaseName: grafana-operator
+    valuesFile: values.yaml
+
+  - name: otel-operator
+    includeCRDs: true
+    releaseName: otel-operator
+    valuesFile: values.yaml
+
+  - name: tempo-operator
+    includeCRDs: true
+    releaseName: tempo-operator
+    valuesFile: values.yaml
+
+  - name: tempo
+    includeCRDs: true
+    releaseName: tempo
+    valuesFile: values.yaml
+
+  - name: otel-collector
+    includeCRDs: true
+    releaseName: otel-collector
+    valuesFile: values.yaml
+
+  - name: grafana
+    includeCRDs: true
+    releaseName: grafana
+    valuesFile: values.yaml
+
+  - name: uwm
+    includeCRDs: true
+    releaseName: uwm
+    valuesFile: values.yaml
