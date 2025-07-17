@@ -75,8 +75,4 @@ def run_agent(pod_name, namespace):
             session_id=session_id,
             stream=False
         )
-        if stream:
-            for log in EventLogger().log(response):
-                log.print()
-        else:
-            step_printer(response.steps)
+        step_printer(response.steps)
