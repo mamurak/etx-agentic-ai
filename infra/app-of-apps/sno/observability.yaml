@@ -24,7 +24,7 @@ spec:
       project: default
       destination:
         server: "{{.server}}"
-        namespace: redhat-ods-operator
+        namespace: observability-hub
       source:
         repoURL: https://github.com/redhat-ai-services/etx-agentic-ai.git
         path: infra/applications/observability/base
