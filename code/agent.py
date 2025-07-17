@@ -22,7 +22,7 @@ sampling_params = {
     "strategy": strategy,
     "max_tokens": max_tokens,
 }
-print(f"Inference Parameters:\n\tModel: {model_id}\n\tSampling Parameters: {sampling_params}\n\tstream: {stream}")
+print(f"Inference Parameters:\n\tModel: {model_id}\n\tSampling Parameters: {sampling_params}")
 
 
 client = LlamaStackClient(
