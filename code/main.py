@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
+from agent import run_agent
+
 
 app = FastAPI()
 
@@ -15,4 +17,8 @@ class PipelineFailure(BaseModel):
 async def report_failure(pipeline_failure: PipelineFailure):
     print(f'received report-failure request with payload: '
           f'{pipeline_failure}')
+    run_agent(
+        pipeline_failure.pod_name, pipeline_failure.namespace
+    )
+    print('responding to client')
     return pipeline_failure
