@@ -1,0 +1,6 @@
+---
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: agent-service-test
+  namespace: agent-demo
