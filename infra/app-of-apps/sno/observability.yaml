@@ -27,7 +27,7 @@ spec:
         namespace: openshift-gitops
       source:
         repoURL: https://github.com/redhat-ai-services/etx-agentic-ai.git
-        path: infra/applications/observability/base
+        path: infra/applications/observability/overlay
         plugin:
           name: argocd-novault-plugin-kustomize
         targetRevision: main
