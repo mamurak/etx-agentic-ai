@@ -40,8 +40,6 @@ helm.sh/chart: {{ include "distributed-tracing-ui-plugin.chart" . }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
-app.kubernetes.io/component: ui-plugin
-app.kubernetes.io/part-of: observability
 {{- if .Values.monitoring.enabled }}
 {{- range $key, $value := .Values.monitoring.labels }}
 {{ $key }}: {{ $value | quote }}
