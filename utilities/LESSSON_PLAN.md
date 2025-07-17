@@ -56,3 +56,7 @@ whats in the cluster
         - Observability + Evals (back to Notebooks)
             - 1. run evals notebook
             - 2. observe 👀; loook for evals; rerun pipeline; look for agent interactions; jenkins dashboard;
+        - Stretch Assignment:
+            - Add RAG to agent to pull from docs (identify a type of issue you wish to solve, find the relevant docs, embed, query)
+            - Create and deploy agent
+            - Create evals for the new agent
