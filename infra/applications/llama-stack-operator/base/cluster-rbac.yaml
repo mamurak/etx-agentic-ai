@@ -1,45 +1,5 @@
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  labels:
-    app.kubernetes.io/name: llama-stack-k8s-operator
-  name: llama-stack-k8s-operator-leader-election-role
-  namespace: llama-stack-k8s-operator-system
-rules:
-- apiGroups:
-  - ""
-  resources:
-  - configmaps
-  verbs:
-  - get
-  - list
-  - watch
-  - create
-  - update
-  - patch
-  - delete
-- apiGroups:
-  - coordination.k8s.io
-  resources:
-  - leases
-  verbs:
-  - get
-  - list
-  - watch
-  - create
-  - update
-  - patch
-  - delete
-- apiGroups:
-  - ""
-  resources:
-  - events
-  verbs:
-  - create
-  - patch
----
-apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   labels:
@@ -162,22 +122,6 @@ rules:
   - create
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  labels:
-    app.kubernetes.io/name: llama-stack-k8s-operator
-  name: llama-stack-k8s-operator-leader-election-rolebinding
-  namespace: llama-stack-k8s-operator-system
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: llama-stack-k8s-operator-leader-election-role
-subjects:
-- kind: ServiceAccount
-  name: llama-stack-k8s-operator-controller-manager
-  namespace: llama-stack-k8s-operator-system
----
-apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   labels:
@@ -190,7 +134,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: llama-stack-k8s-operator-controller-manager
-  namespace: llama-stack-k8s-operator-system
+  namespace: llama-stack-k8s-operator-controller-manager
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -205,4 +149,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: llama-stack-k8s-operator-controller-manager
-  namespace: llama-stack-k8s-operator-system
+  namespace: llama-stack-k8s-operator-controller-manager
