@@ -16,7 +16,7 @@ class PipelineFailure(BaseModel):
 @app.get('/health')
 async def health():
     print('receive health request')
-    return
+    return 'ok'
 
 
 @app.post("/report-failure")

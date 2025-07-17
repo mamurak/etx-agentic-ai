@@ -45,7 +45,7 @@ agent = ReActAgent(
         "json_schema": ReActOutput.model_json_schema(),
     },
     sampling_params={"max_tokens":512},
-    max_infer_iters=5
+    max_infer_iters=10
 )
 print('instantiated ReAct agent')
 
